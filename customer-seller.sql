@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 27, 2022 at 03:32 AM
+-- Generation Time: Dec 27, 2022 at 03:50 AM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cpay_per_hour` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `currency` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pay_per_hour` int(11) DEFAULT NULL,
   `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` bigint(20) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -89,7 +89,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2022_12_27_024848_create_seller_table', 1),
 (6, '2022_12_27_030057_add__d_o_b_to_seller_table', 2),
-(7, '2022_12_27_030246_create_customer_table', 3);
+(7, '2022_12_27_030246_create_customer_table', 3),
+(8, '2022_12_27_033649_rename_wrong_col_name', 4),
+(9, '2022_12_27_034004_allow_null_customer_currency', 5),
+(10, '2022_12_27_034042_allow_null_seller_currency', 6),
+(11, '2022_12_27_034132_allow_null_seller_cost', 7),
+(12, '2022_12_27_034332_allow_null_seller_pay', 8),
+(13, '2022_12_27_034638_change_payperhour_type', 9),
+(14, '2022_12_27_034925_change_type_of_payperhour', 10);
 
 -- --------------------------------------------------------
 
@@ -140,8 +147,8 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cost_per_hour` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `currency` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cost_per_hour` int(11) DEFAULT NULL,
   `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `skills` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
