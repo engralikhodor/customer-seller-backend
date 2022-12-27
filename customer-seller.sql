@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 27, 2022 at 10:51 PM
+-- Generation Time: Dec 27, 2022 at 11:56 PM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -98,7 +98,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2022_12_27_034638_change_payperhour_type', 9),
 (14, '2022_12_27_034925_change_type_of_payperhour', 10),
 (15, '2022_12_27_221046_change_type_1', 11),
-(16, '2022_12_27_221623_create_task_table', 12);
+(16, '2022_12_27_221623_create_task_table', 12),
+(17, '2022_12_27_233943_add_customer_foreign_to_task_table', 13),
+(18, '2022_12_27_234244_test1', 14),
+(19, '2022_12_27_234940_test2', 15),
+(20, '2022_12_27_235144_test3', 16),
+(21, '2022_12_27_235223_test4', 17);
 
 -- --------------------------------------------------------
 
@@ -177,12 +182,14 @@ CREATE TABLE IF NOT EXISTS `task` (
   `location_lng` double(11,8) DEFAULT NULL,
   `total_cost` int(11) DEFAULT NULL,
   `task_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_by_id` bigint(20) NOT NULL,
-  `assigned_to_id` bigint(20) DEFAULT NULL,
+  `created_by_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `assigned_to_id` bigint(20) UNSIGNED DEFAULT NULL,
   `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `task_created_by_id_foreign` (`created_by_id`),
+  KEY `task_assigned_to_id_foreign` (`assigned_to_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -204,6 +211,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `task`
+--
+ALTER TABLE `task`
+  ADD CONSTRAINT `task_assigned_to_id_foreign` FOREIGN KEY (`assigned_to_id`) REFERENCES `seller` (`id`),
+  ADD CONSTRAINT `task_created_by_id_foreign` FOREIGN KEY (`created_by_id`) REFERENCES `customer` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
