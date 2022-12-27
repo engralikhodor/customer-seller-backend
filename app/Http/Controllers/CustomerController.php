@@ -9,21 +9,21 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     // GET ALL CUSTOMERS
-    public function getAllCustomers()
+    public function getAll()
     {
         $data = Customer::get();
         return response()->json($data, 200);
     }
     /*------------------------------------------*/
     // GET BY ID
-    public function getByID($id)
+    public function get($id)
     {
         $data = Customer::find($id);
         return response()->json($data, 200);
     }
     /*------------------------------------------*/
     //DELETE BY ID
-    public function deleteByID($id)
+    public function delete($id)
     {
         $res = Customer::find($id)->delete();
         return response()->json([
@@ -33,7 +33,7 @@ class CustomerController extends Controller
     }
     /*------------------------------------------*/
     //CREATE NEW CUSTOMER
-    public function createCustomer(Request $request)
+    public function create(Request $request)
     {
         $data['first_name'] = $request['first_name'];
         $data['last_name'] = $request['last_name'];
@@ -54,7 +54,7 @@ class CustomerController extends Controller
     }
     /*------------------------------------------*/
     // UPDATE
-    public function updateByID(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $data['first_name'] = $request['first_name'];
         $data['last_name'] = $request['last_name'];

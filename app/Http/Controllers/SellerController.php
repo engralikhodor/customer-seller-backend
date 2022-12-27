@@ -8,21 +8,21 @@ use Illuminate\Http\Request;
 class SellerController extends Controller
 {
     // GET ALL SELLERS
-    public function getAllSellers()
+    public function getAll()
     {
         $data = Seller::get();
         return response()->json($data, 200);
     }
-
+    /*------------------------------------------*/
     // GET BY ID
-    public function getByID($id)
+    public function get($id)
     {
         $data = Seller::find($id);
         return response()->json($data, 200);
     }
-
+    /*------------------------------------------*/
     //DELETE BY ID
-    public function deleteByID($id)
+    public function delete($id)
     {
         $res = Seller::find($id)->delete();
         return response()->json([
@@ -30,9 +30,9 @@ class SellerController extends Controller
             'success' => true
         ], 200);
     }
-
+    /*------------------------------------------*/
     //CREATE NEW SELLER
-    public function createSeller(Request $request)
+    public function create(Request $request)
     {
         $data['first_name'] = $request['first_name'];
         $data['last_name'] = $request['last_name'];
@@ -52,9 +52,9 @@ class SellerController extends Controller
             'success' => true
         ], 200);
     }
-
+    /*------------------------------------------*/
     // UPDATE
-    public function updateByID(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $data['first_name'] = $request['first_name'];
         $data['last_name'] = $request['last_name'];
