@@ -37,3 +37,5 @@ Route::prefix('customer')->group(function () {
     Route::delete('/{id}', [CustomerController::class, 'deleteByID']);
     Route::put('/{id}', [CustomerController::class, 'updateByID']);
 });
+
+//test
