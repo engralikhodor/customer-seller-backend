@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 27, 2022 at 10:14 PM
+-- Generation Time: Dec 27, 2022 at 10:51 PM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -97,7 +97,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2022_12_27_034332_allow_null_seller_pay', 8),
 (13, '2022_12_27_034638_change_payperhour_type', 9),
 (14, '2022_12_27_034925_change_type_of_payperhour', 10),
-(15, '2022_12_27_221046_change_type_1', 11);
+(15, '2022_12_27_221046_change_type_1', 11),
+(16, '2022_12_27_221623_create_task_table', 12);
 
 -- --------------------------------------------------------
 
@@ -157,6 +158,30 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `date_of_birth` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `task`
+--
+
+DROP TABLE IF EXISTS `task`;
+CREATE TABLE IF NOT EXISTS `task` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `date_time_from` datetime NOT NULL,
+  `date_time_to` datetime NOT NULL,
+  `city` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location_lat` double(10,8) DEFAULT NULL,
+  `location_lng` double(11,8) DEFAULT NULL,
+  `total_cost` int(11) DEFAULT NULL,
+  `task_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by_id` bigint(20) NOT NULL,
+  `assigned_to_id` bigint(20) DEFAULT NULL,
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
