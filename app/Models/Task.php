@@ -20,5 +20,6 @@ class Task extends Model
         "created_by_id",
         "assigned_to_id",
         "status",
+        "is_deleted",
     ];
 }

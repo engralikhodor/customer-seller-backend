@@ -20,6 +20,7 @@ class Seller extends Model
         'email',
         'phone',
         'skills',
-        'date_of_birth'
+        'date_of_birth',
+        'is_deleted'
     ];
 }

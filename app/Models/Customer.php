@@ -19,6 +19,7 @@ class Customer extends Model
         'gender',
         'email',
         'phone',
-        'date_of_birth'
+        'date_of_birth',
+        'is_deleted'
     ];
 }
