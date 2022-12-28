@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 27, 2022 at 11:56 PM
+-- Generation Time: Dec 28, 2022 at 01:12 AM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `date_of_birth` date NOT NULL,
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -76,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -103,7 +104,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2022_12_27_234244_test1', 14),
 (19, '2022_12_27_234940_test2', 15),
 (20, '2022_12_27_235144_test3', 16),
-(21, '2022_12_27_235223_test4', 17);
+(21, '2022_12_27_235223_test4', 17),
+(22, '2022_12_28_005230_add_is_deleted_field', 18),
+(23, '2022_12_28_005543_test', 19),
+(24, '2022_12_28_010030_test', 20),
+(25, '2022_12_28_010842_add_isdeleted_field', 21);
 
 -- --------------------------------------------------------
 
@@ -163,6 +168,7 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `date_of_birth` date NOT NULL,
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -187,6 +193,7 @@ CREATE TABLE IF NOT EXISTS `task` (
   `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `task_created_by_id_foreign` (`created_by_id`),
   KEY `task_assigned_to_id_foreign` (`assigned_to_id`)
