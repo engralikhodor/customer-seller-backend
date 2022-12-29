@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 28, 2022 at 01:12 AM
+-- Generation Time: Dec 29, 2022 at 04:08 PM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `currency` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pay_per_hour` int(11) DEFAULT NULL,
+  `pay_per_hour` decimal(4,2) DEFAULT NULL,
   `gender` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` bigint(20) NOT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `country` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `currency` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cost_per_hour` int(11) DEFAULT NULL,
+  `cost_per_hour` decimal(4,2) DEFAULT NULL,
   `gender` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `skills` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `task` (
   `city` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `location_lat` double(10,8) DEFAULT NULL,
   `location_lng` double(11,8) DEFAULT NULL,
-  `total_cost` int(11) DEFAULT NULL,
+  `total_cost` decimal(4,2) DEFAULT NULL,
   `task_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by_id` bigint(20) UNSIGNED DEFAULT NULL,
   `assigned_to_id` bigint(20) UNSIGNED DEFAULT NULL,
