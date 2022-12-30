@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 29, 2022 at 04:08 PM
+-- Generation Time: Dec 30, 2022 at 05:20 AM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `phone` bigint(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `date_of_birth` date NOT NULL,
+  `date_of_birth` date DEFAULT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `phone` bigint(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `date_of_birth` date NOT NULL,
+  `date_of_birth` date DEFAULT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

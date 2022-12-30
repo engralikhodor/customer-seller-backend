@@ -47,6 +47,7 @@ class CustomerController extends Controller
         $data['date_of_birth'] = $request['date_of_birth'];
 
         Customer::create($data);
+
         return response()->json([
             'message' => "Successfully added!",
             'success' => true
@@ -68,6 +69,7 @@ class CustomerController extends Controller
         $data['date_of_birth'] = $request['date_of_birth'];
 
         Customer::find($id)->update($data);
+        
         return response()->json([
             'message' => "Saved!",
             'success' => true
