@@ -45,3 +45,11 @@ Route::prefix('task')->group(function () {
     Route::put('/{id}', [TaskController::class, 'update']);
 });
 /*------------------------------------------*/
+Route::prefix('community')->group(function () {
+    Route::post('/', [CommunityController::class, 'create']);
+    Route::get('/', [CommunityController::class, 'getAll']);
+    Route::get('/{id}', [CommunityController::class, 'get']);
+    Route::delete('/{id}', [CommunityController::class, 'delete']);
+    Route::put('/{id}', [CommunityController::class, 'update']);
+});
+/*------------------------------------------*/
