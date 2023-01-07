@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CommunityController;
 
 /*
 |--------------------------------------------------------------------------
