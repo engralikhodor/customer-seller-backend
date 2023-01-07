@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 07, 2023 at 05:15 AM
+-- Generation Time: Jan 07, 2023 at 09:53 PM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -36,7 +36,14 @@ CREATE TABLE IF NOT EXISTS `community` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `community`
+--
+
+INSERT INTO `community` (`id`, `name`, `description`, `created_at`, `updated_at`, `is_deleted`) VALUES
+(1, 'first comm', 'desc desc', '2023-01-07 18:06:55', '2023-01-07 18:06:55', 0);
 
 -- --------------------------------------------------------
 
@@ -61,7 +68,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `date_of_birth` date DEFAULT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `first_name`, `last_name`, `country`, `city`, `currency`, `pay_per_hour`, `gender`, `email`, `phone`, `created_at`, `updated_at`, `date_of_birth`, `is_deleted`) VALUES
+(2, 'min', 'samir', 'Lebanon', 'Beirut', NULL, NULL, 'm', 'oksmirok@gmail.com', 961, '2023-01-07 06:41:14', '2023-01-07 06:41:14', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -182,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `currency` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cost_per_hour` decimal(4,2) DEFAULT NULL,
   `gender` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `skills` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `skills` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` bigint(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -190,7 +204,14 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `date_of_birth` date DEFAULT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `seller`
+--
+
+INSERT INTO `seller` (`id`, `first_name`, `last_name`, `country`, `city`, `currency`, `cost_per_hour`, `gender`, `skills`, `email`, `phone`, `created_at`, `updated_at`, `date_of_birth`, `is_deleted`) VALUES
+(2, 'sellerr', 'onee', 'Qatarr', 'الدوحةr', NULL, NULL, 'm', NULL, 'qatar@gmail.com', 1234, '2023-01-07 07:48:24', '2023-01-07 07:48:37', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -204,8 +225,8 @@ CREATE TABLE IF NOT EXISTS `task` (
   `date_time_from` datetime NOT NULL,
   `date_time_to` datetime NOT NULL,
   `city` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `location_lat` double(10,8) NOT NULL,
-  `location_lng` double(11,8) NOT NULL,
+  `location_lat` decimal(10,0) NOT NULL,
+  `location_lng` decimal(10,0) NOT NULL,
   `total_cost` decimal(4,2) DEFAULT NULL,
   `task_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_by_id` bigint(20) UNSIGNED NOT NULL,
@@ -217,7 +238,14 @@ CREATE TABLE IF NOT EXISTS `task` (
   PRIMARY KEY (`id`),
   KEY `task_created_by_id_foreign` (`created_by_id`),
   KEY `task_assigned_to_id_foreign` (`assigned_to_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `task`
+--
+
+INSERT INTO `task` (`id`, `date_time_from`, `date_time_to`, `city`, `location_lat`, `location_lng`, `total_cost`, `task_type`, `created_by_id`, `assigned_to_id`, `status`, `created_at`, `updated_at`, `is_deleted`) VALUES
+(3, '2023-01-07 00:00:00', '2023-01-08 00:00:00', 'Beirut', '1000', '2000', NULL, 'NEW', 2, NULL, 'NEW', '2023-01-07 19:50:53', '2023-01-07 19:50:53', 0);
 
 -- --------------------------------------------------------
 
