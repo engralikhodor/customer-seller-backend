@@ -9,5 +9,5 @@ class community extends Model
 {
     use HasFactory;
     protected $table = "community";
-    protected $fillable = ['id', 'name', 'description'];
+    protected $fillable = ['id', 'name', 'description','is_deleted'];
 }

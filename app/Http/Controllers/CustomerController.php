@@ -11,7 +11,8 @@ class CustomerController extends Controller
     // GET ALL CUSTOMERS
     public function getAll()
     {
-        $data = Customer::get();
+        // $data = Customer::get();
+        $data = Customer::where('is_deleted', '!=', 0)->get();
         return response()->json($data, 200);
     }
     /*------------------------------------------*/
@@ -69,7 +70,7 @@ class CustomerController extends Controller
         $data['date_of_birth'] = $request['date_of_birth'];
 
         Customer::find($id)->update($data);
-        
+
         return response()->json([
             'message' => "Saved!",
             'success' => true

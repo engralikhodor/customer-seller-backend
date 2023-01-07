@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 06, 2023 at 12:00 PM
+-- Generation Time: Jan 07, 2023 at 05:15 AM
 -- Server version: 5.7.31-log
 -- PHP Version: 7.4.26
 
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `community` (
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -126,7 +127,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2022_12_28_010030_test', 20),
 (25, '2022_12_28_010842_add_isdeleted_field', 21),
 (26, '2023_01_04_185149_create_community_table', 22),
-(27, '2023_01_04_185324_make_comm_descr_nullable', 23);
+(27, '2023_01_04_185324_make_comm_descr_nullable', 23),
+(28, '2023_01_07_051318_add_isdeleted_to_community', 24);
 
 -- --------------------------------------------------------
 

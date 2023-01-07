@@ -10,7 +10,8 @@ class CommunityController extends Controller
 
     public function getAll()
     {
-        $data = Community::get();
+        // $data = Community::get();
+        $data = Community::where('is_deleted', '!=', 0)->get();
         return $data;
     }
     // ----------------------------------------
