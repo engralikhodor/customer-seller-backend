@@ -11,7 +11,22 @@ class SellerController extends Controller
     public function getAll()
     {
         // $data = Seller::get();
-        $data = Seller::where('is_deleted', '==', 0)->get();
+        $data = Seller::where('is_deleted', '==', 0)->get(
+            [
+                'id',
+                'first_name',
+                'last_name',
+                'city',
+                'country',
+                'gender',
+                'phone',
+                'created_at'
+            ]
+        );
+        foreach ($data as $row) {
+            $row["full_name"] = $row->first_name . " " . $row->last_name;
+            $row["created_at_str"] =  $row->created_at->format('d M y');
+        }
         return response()->json($data, 200);
     }
     /*------------------------------------------*/
