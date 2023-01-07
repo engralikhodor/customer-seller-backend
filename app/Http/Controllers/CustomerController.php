@@ -12,7 +12,7 @@ class CustomerController extends Controller
     public function getAll()
     {
         // $data = Customer::get();
-        $data = Customer::where('is_deleted', '!=', 0)->get();
+        $data = Customer::where('is_deleted', '==', 0)->get();
         return response()->json($data, 200);
     }
     /*------------------------------------------*/

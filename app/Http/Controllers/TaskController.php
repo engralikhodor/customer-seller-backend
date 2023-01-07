@@ -11,7 +11,7 @@ class TaskController extends Controller
     public function getAll()
     {
         // $data = Task::get();
-        $data = Task::where('is_deleted', '!=', 0)->get();
+        $data = Task::where('is_deleted', '==', 0)->get();
         return response()->json($data);
     }
     /*------------------------------------------*/

@@ -11,7 +11,7 @@ class SellerController extends Controller
     public function getAll()
     {
         // $data = Seller::get();
-        $data = Seller::where('is_deleted', '!=', 0)->get();
+        $data = Seller::where('is_deleted', '==', 0)->get();
         return response()->json($data, 200);
     }
     /*------------------------------------------*/
